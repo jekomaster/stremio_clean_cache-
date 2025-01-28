@@ -1,16 +1,22 @@
 
-```markdown
+
 # Stremio Cache Cleaner
 
-This Python script helps you clean the cache of your Stremio server to free up disk space, and shows a notification with the results.
 
-## Requirements
+## This Python script helps you clean the cache of your Stremio server to free up disk space, and shows a notification with the results.
+
+### Requirements
+
+```markdown
+
+
+
 
 - Python 3
 - `libnotify` (for notifications)
 - `notify-send` (for sending notifications)
 - `dunst` (for customizable notifications)
-
+```
 
 2. **Install Dependencies**: Install Python dependencies (if any are listed in `requirements.txt`).
 
@@ -254,9 +260,7 @@ pkill dunst && dunst &
 ```
 
 
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](LICENSE) file for details.
 
