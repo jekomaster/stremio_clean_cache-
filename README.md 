@@ -4,6 +4,8 @@
 
 This Python script helps you clean the cache of your Stremio server to free up disk space, and shows a notification with the results.
 
+---
+
 ## Requirements
 
 - Python 3
@@ -11,32 +13,32 @@ This Python script helps you clean the cache of your Stremio server to free up d
 - `notify-send` (for sending notifications)
 - `dunst` (for customizable notifications)
 
+---
+
 ## Installation
 
-1. **Clone the Repository**: Download or clone this repository to your local machine.
-   
-   ```bash
-   git clone https://github.com/yourusername/stremio-cache-cleaner.git
-   ```
+### Clone the Repository
+Download or clone this repository to your local machine:
 
-2. **Install Dependencies**: Install Python dependencies (if any are listed in `requirements.txt`).
+```bash
+git clone https://github.com/jekomaster/stremio_clean_cache-.git
+cd stremio_clean_cache-
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Install Dependencies
+Install Python dependencies (if any are listed in `requirements.txt`):
 
-   Or install `libnotify` and `dunst` for notifications:
+```bash
+pip install -r requirements.txt
+```
 
-   ```bash
-   sudo pacman -S libnotify dunst
-   ```
+Or install `libnotify` and `dunst` for notifications:
 
-3. **Install dunst (if not already installed)**:
-   If you don't have `dunst` installed, run:
+```bash
+sudo pacman -S libnotify dunst
+```
 
-   ```bash
-   sudo pacman -S dunst
-   ```
+---
 
 ## Usage
 
@@ -46,87 +48,72 @@ This Python script helps you clean the cache of your Stremio server to free up d
    python3 clean_stremio_cache.py
    ```
 
-   This will:
-   - Check the cache directory.
-   - Clean the cache (freeing up disk space).
-   - Show a notification after completion with the result (how much space was freed).
+2. **Compiled Binary (Optional)**: If you prefer to use the compiled binary:
 
-2. **Notification**: After the cache is cleaned, a notification will pop up showing the result of the operation. If you have `dunst` installed, it will display a styled notification.
+   ```bash
+   ./clean_stremio_cache
+   ```
+
+   This requires the binary to be built using `makepkg` (see below).
+
+3. **Notifications**: After cleaning the cache, a notification will display the result.
 
 ---
 
-## Customizing dunst Notifications
+## Building from Source (Arch Linux)
 
-You can customize the appearance of your notifications (such as background color, font, and corner radius) by editing the `dunst` configuration file. Here’s how you can do it:
+1. **Build the Package**:
+   ```bash
+   makepkg -si
+   ```
 
-### Location of the dunst Configuration File
+2. **Run the Compiled Binary**:
+   ```bash
+   ./clean_stremio_cache
+   ```
 
+---
+
+## Customizing Notifications with dunst
+
+You can customize the appearance of notifications by editing the `dunst` configuration file.
+
+### Edit Configuration
 The `dunst` configuration file is typically located in:
 
 ```bash
 ~/.config/dunst/dunstrc
 ```
 
-### Customizing Your Notifications
+#### Key Settings to Modify:
+- **Background Color**:
+  ```ini
+  [urgency_normal]
+  background = "#222222"  # Replace with your preferred color
+  ```
+- **Corner Radius for Rounded Corners**:
+  ```ini
+  [global]
+  corner_radius = 10
+  ```
+- **Font**:
+  ```ini
+  [global]
+  font = "Noto Sans 12"
+  ```
+- **Notification Position**:
+  ```ini
+  [global]
+  geometry = "320x5-25+60"
+  ```
 
-1. **Change the Background Color**: To change the background color of your notifications, find the `background` field in the `urgency_*` sections (low, normal, critical) and adjust the hex color value.
+#### Restart dunst:
+After making changes, restart `dunst` to apply them:
 
-   Example:
-   ```ini
-   [urgency_normal]
-   background = "#232323"  # Change this to your preferred color
-   foreground = "#f0f0f0"
-   ```
-
-2. **Set Corner Radius for Rounded Corners**: To give your notifications rounded corners, set the `corner_radius` value to a positive integer (e.g., `corner_radius = 10`).
-
-   Example:
-   ```ini
-   [global]
-   corner_radius = 10  # Adjust for rounded corners
-   ```
-
-3. **Change Font**: Change the font for your notifications by adjusting the `font` setting.
-
-   Example:
-   ```ini
-   [global]
-   font = Noto Sans 12
-   ```
-
-4. **Position of Notifications**: You can also adjust the position of the notifications on the screen using the `geometry` option.
-
-   Example:
-   ```ini
-   [global]
-   geometry = "320x5+10+60"  # Set the position and size of the notification
-   ```
-
-### Restart dunst for Changes to Take Effect
-
-Once you've edited the configuration file, restart `dunst` to apply the changes:
-
-1. **Restart dunst**:
-   ```bash
-   pkill dunst
-   dunst &
-   ```
-
-### Example Customization
-
-Here’s an example of a simple customization in the `dunstrc`:
-
-```ini
-[global]
-geometry = "320x5-25+60"
-corner_radius = 10
-frame_color = "#232323"
-background = "#222222"
-foreground = "#ffffff"
-font = "Noto Sans 12"
+```bash
+pkill dunst
+dunst &
 ```
-
-This configuration gives your notifications rounded corners, a dark background with light text, and uses a specific font.
 
 ---
 
@@ -134,8 +121,13 @@ This configuration gives your notifications rounded corners, a dark background w
 
 I initially tried using the default `xfce4-notifyd` for notifications, but I wasn't able to make it work properly on my setup. As a result, I considered `dunst` as an alternative. Dunst is a highly customizable notification daemon that allows much more control over the appearance and behavior of notifications, making it a better fit for this project.
 
+---
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
 
+---
+
+This version incorporates the necessary adjustments while keeping the structure clean and user-friendly! Let me know if you need help uploading it to your repository or refining further.
