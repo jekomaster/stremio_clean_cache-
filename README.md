@@ -1,6 +1,10 @@
 
-```markdown
+
 # Stremio Cache Cleaner
+
+
+```markdown
+
 
 This Python script helps you clean the cache of your Stremio server to free up disk space, and shows a notification with the results.
 
@@ -258,5 +262,4 @@ pkill dunst && dunst &
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
 
